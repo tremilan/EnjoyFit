@@ -6,3 +6,7 @@ __pycache__/
 *.log
 export/
 export.zip
+
+# Klientské podklady (fotky, videa, archivy) — pouze lokálně
+fotky/
+*.zip
