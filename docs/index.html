@@ -1,46 +1,344 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Enjoy Team</title>
-  <meta name="description" content="Enjoy Team — nový web. Připravujeme.">
-  <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enjoy team – vedené lekce a kruhové tréninky. Najdi si svou pobočku a rezervuj si lekci.">
+  <title>Enjoy team – Pohyb, energie, komunita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="./" class="site-header__logo">Enjoy Team</a>
-      <nav class="site-header__nav" aria-label="Hlavní navigace">
-        <a href="./" class="is-active">Úvod</a>
-      </nav>
-    </div>
+
+  <!-- Navigace -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">
+        <img src="assets/logo-enjoy-team.png" alt="Enjoy team" width="120" height="48">
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#pobocky" class="nav__link">Pobočky</a></li>
+        <li><a href="#o-nas" class="nav__link">O nás</a></li>
+        <li><a href="#cenik" class="nav__link">Ceník</a></li>
+        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <p class="hero__eyebrow">Nový web</p>
-        <h1 class="hero__title">Enjoy Team</h1>
-        <p class="hero__lead">
-          Základ projektu je připraven. Tady vznikne web pro nového klienta — obsah, design a podstránky doplníme v dalších krocích.
-        </p>
-        <a href="#kontakt" class="btn btn--primary">Domluvit konzultaci</a>
+
+    <!-- 1. Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__bg"></div>
+      <div class="container hero__content">
+        <div class="hero__layout">
+          <div class="hero__col hero__col--logo">
+            <img src="assets/logo-enjoy-team.png" alt="Enjoy team" width="420" height="168">
+          </div>
+          <div class="hero__col hero__col--text">
+            <h1 class="hero__title">Pohyb<br>Zdraví<br>Energie<br>Podpora<br>Komunita</h1>
+          </div>
+          <div class="hero__cta">
+            <a href="rezervace/frydlant.html" class="btn btn--primary btn--large">Frýdlant nad Ostravicí</a>
+            <a href="rezervace/krmelin.html" class="btn btn--secondary btn--large">Krmelín</a>
+            <a href="#pobocky" class="btn btn--secondary btn--large">Frýdek-Místek</a>
+            <a href="#pobocky" class="btn btn--secondary btn--large">Dobrá</a>
+          </div>
+        </div>
+        <a href="#pobocky" class="hero__scroll" aria-label="Posunout dolů">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
       </div>
     </section>
 
-    <section id="kontakt" class="container" style="padding-bottom: 5rem; text-align: center;">
-      <h2>Kontakt</h2>
-      <p style="color: var(--color-text-muted);">Sekce připravena k doplnění údajů klienta.</p>
+    <!-- 2. Rozcestník poboček -->
+    <section class="branches section" id="pobocky">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Vyber si svou pobočku</h2>
+          <p class="section__desc">Dvě lokality, jeden tým. Klikni a rovnou rezervuj lekci.</p>
+        </div>
+
+        <div class="branches__grid">
+
+          <!-- Pobočka A -->
+          <article class="branch-card" id="pobocka-a">
+            <div class="branch-card__header">
+              <span class="branch-card__tag">Pobočka A</span>
+              <h3 class="branch-card__name">Frýdlant nad Ostravicí</h3>
+            </div>
+            <ul class="branch-card__info">
+              <li>
+                <span class="branch-card__icon">📍</span>
+                <div>
+                  <strong>Adresa</strong>
+                  <p>Sportovní a relaxační centrum Kotelna<br>Hamernická 233, 739 11 Frýdlant nad Ostravicí</p>
+                </div>
+              </li>
+              <li>
+                <span class="branch-card__icon">✨</span>
+                <div>
+                  <strong>Specifika</strong>
+                  <p>Dětský koutek · Kruhové tréninky · Yoga</p>
+                </div>
+              </li>
+              <li>
+                <span class="branch-card__icon">📞</span>
+                <div>
+                  <strong>Kontakt</strong>
+                  <p>Adéla · <a href="tel:+420733352478">733 352 478</a><br>
+                  <a href="mailto:adela@skrabalova.cz">adela@skrabalova.cz</a></p>
+                </div>
+              </li>
+            </ul>
+            <a href="rezervace/frydlant.html" class="btn btn--primary btn--full btn--large">
+              Vstoupit do rezervací A
+            </a>
+          </article>
+
+          <!-- Pobočka B -->
+          <article class="branch-card branch-card--alt" id="pobocka-b">
+            <div class="branch-card__header">
+              <span class="branch-card__tag branch-card__tag--alt">Pobočka B</span>
+              <h3 class="branch-card__name">Krmelín</h3>
+            </div>
+            <ul class="branch-card__info">
+              <li>
+                <span class="branch-card__icon">📍</span>
+                <div>
+                  <strong>Adresa</strong>
+                  <p>TJ Sokol Krmelín, z.s.<br>Brušperská 72, 739 24 Krmelín</p>
+                </div>
+              </li>
+              <li>
+                <span class="branch-card__icon">✨</span>
+                <div>
+                  <strong>Specifika</strong>
+                  <p>Tréninky pro ženy · Core · HIIT</p>
+                </div>
+              </li>
+              <li>
+                <span class="branch-card__icon">📞</span>
+                <div>
+                  <strong>Kontakt</strong>
+                  <p>Adéla · <a href="tel:+420733352478">733 352 478</a><br>
+                  <a href="mailto:adela@skrabalova.cz">adela@skrabalova.cz</a></p>
+                </div>
+              </li>
+            </ul>
+            <a href="rezervace/krmelin.html" class="btn btn--secondary btn--full btn--large">
+              Vstoupit do rezervací B
+            </a>
+          </article>
+
+        </div>
+      </div>
     </section>
+
+    <!-- 3. O nás -->
+    <section class="about section" id="o-nas">
+      <div class="container">
+        <div class="about__logo">
+          <img src="assets/logo-enjoy-team.png" alt="Enjoy team" width="160" height="160">
+        </div>
+        <div class="about__grid">
+          <div class="about__text">
+            <h2 class="section__title">Naše filozofie</h2>
+            <p class="about__lead">Enjoy team není jen fitness. Je to komunita lidí, kteří se navzájem podporují a radují se z pohybu.</p>
+            <p>Žádné odsuzování, žádný tlak na výkon. U nás jde o radost z pohybu, energii a pocit, že patříš někam. Ať už přijdeš poprvé nebo jsi u nás roky – vždy tě přivítáme s úsměvem.</p>
+            <ul class="about__values">
+              <li><span>💛</span> Komunita na prvním místě</li>
+              <li><span>⚡</span> Energie v každé lekci</li>
+              <li><span>🤝</span> Podpora bez ohledu na úroveň</li>
+              <li><span>🎯</span> Radost z pohybu, ne výsledky na váze</li>
+            </ul>
+          </div>
+          <div class="about__gallery">
+            <div class="about__photo about__photo--1">
+              <div class="about__photo-placeholder">
+                <span>Trenérka<br>Martina</span>
+              </div>
+            </div>
+            <div class="about__photo about__photo--2">
+              <div class="about__photo-placeholder">
+                <span>Trenér<br>Honza</span>
+              </div>
+            </div>
+            <div class="about__photo about__photo--3">
+              <div class="about__photo-placeholder">
+                <span>Lekce<br>v akci</span>
+              </div>
+            </div>
+            <div class="about__photo about__photo--4">
+              <div class="about__photo-placeholder">
+                <span>Komunita<br>Enjoy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Ceník -->
+    <section class="pricing section" id="cenik">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Ceník</h2>
+          <p class="section__desc">Transparentní ceny. Vyber si, co ti sedí.</p>
+        </div>
+
+        <div class="pricing__tabs" role="tablist">
+          <button class="pricing__tab pricing__tab--active" role="tab" aria-selected="true" data-tab="frydlant">Frýdlant nad Ostravicí</button>
+          <button class="pricing__tab" role="tab" aria-selected="false" data-tab="krmelin">Krmelín</button>
+        </div>
+
+        <div class="pricing__panels">
+          <div class="pricing__panel pricing__panel--active" id="tab-frydlant" role="tabpanel">
+            <div class="pricing__grid">
+              <div class="price-card">
+                <h3 class="price-card__name">Jednorázový vstup</h3>
+                <p class="price-card__price">250 <span>Kč</span></p>
+                <p class="price-card__desc">Jedna lekce dle výběru</p>
+                <ul class="price-card__features">
+                  <li>Všechny typy lekcí</li>
+                  <li>Platnost 30 dní</li>
+                </ul>
+              </div>
+              <div class="price-card price-card--featured">
+                <span class="price-card__badge">Nejoblíbenější</span>
+                <h3 class="price-card__name">Permanentka</h3>
+                <p class="price-card__price">2 000 <span>Kč</span></p>
+                <p class="price-card__desc">10 vstupů</p>
+                <ul class="price-card__features">
+                  <li>Úspora 500 Kč</li>
+                  <li>Platnost 3 měsíce</li>
+                  <li>Přenos mezi pobočkami</li>
+                </ul>
+              </div>
+              <div class="price-card">
+                <h3 class="price-card__name">Členství</h3>
+                <p class="price-card__price">1 490 <span>Kč/měs</span></p>
+                <p class="price-card__desc">Neomezený přístup</p>
+                <ul class="price-card__features">
+                  <li>Všechny lekce</li>
+                  <li>Prioritní rezervace</li>
+                  <li>Sleva 10 % na merch</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing__panel" id="tab-krmelin" role="tabpanel" hidden>
+            <div class="pricing__grid">
+              <div class="price-card">
+                <h3 class="price-card__name">Jednorázový vstup</h3>
+                <p class="price-card__price">280 <span>Kč</span></p>
+                <p class="price-card__desc">Jedna lekce dle výběru</p>
+                <ul class="price-card__features">
+                  <li>Všechny typy lekcí</li>
+                  <li>Platnost 30 dní</li>
+                </ul>
+              </div>
+              <div class="price-card price-card--featured">
+                <span class="price-card__badge">Nejoblíbenější</span>
+                <h3 class="price-card__name">Permanentka</h3>
+                <p class="price-card__price">2 200 <span>Kč</span></p>
+                <p class="price-card__desc">10 vstupů</p>
+                <ul class="price-card__features">
+                  <li>Úspora 600 Kč</li>
+                  <li>Platnost 3 měsíce</li>
+                  <li>Přenos mezi pobočkami</li>
+                </ul>
+              </div>
+              <div class="price-card">
+                <h3 class="price-card__name">Členství</h3>
+                <p class="price-card__price">1 690 <span>Kč/měs</span></p>
+                <p class="price-card__desc">Neomezený přístup</p>
+                <ul class="price-card__features">
+                  <li>Všechny lekce</li>
+                  <li>Prioritní rezervace</li>
+                  <li>Sleva 10 % na merch</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Kontakt & Patička -->
+    <section class="contact section" id="kontakt">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Kontakt</h2>
+          <p class="section__desc">Jsme tu pro tebe. Ozvi se kdykoliv.</p>
+        </div>
+
+        <div class="contact__grid">
+          <div class="contact__card">
+            <h3>Frýdlant nad Ostravicí</h3>
+            <p>📍 Sportovní a relaxační centrum Kotelna<br>Hamernická 233, 739 11 Frýdlant nad Ostravicí</p>
+            <p>📞 Adéla · <a href="tel:+420733352478">733 352 478</a></p>
+            <p>✉️ <a href="mailto:adela@skrabalova.cz">adela@skrabalova.cz</a></p>
+            <div class="contact__map">
+              <iframe
+                title="Mapa – Frýdlant nad Ostravicí"
+                src="https://maps.google.com/maps?q=Hamernick%C3%A1+233+Fr%C3%BDdlant+nad+Ostravic%C3%AD&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="contact__card">
+            <h3>Krmelín</h3>
+            <p>📍 TJ Sokol Krmelín, z.s.<br>Brušperská 72, 739 24 Krmelín</p>
+            <p>📞 Adéla · <a href="tel:+420733352478">733 352 478</a></p>
+            <p>✉️ <a href="mailto:adela@skrabalova.cz">adela@skrabalova.cz</a></p>
+            <div class="contact__map">
+              <iframe
+                title="Mapa – Krmelín"
+                src="https://maps.google.com/maps?q=Bru%C5%A1persk%C3%A1+72+Krmel%C3%ADn&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span data-year></span> Enjoy Team</p>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">
+          <img src="assets/logo-enjoy-team.png" alt="Enjoy team" width="140" height="56">
+        </a>
+        <p>Pohyb, energie, komunita.</p>
+      </div>
+      <div class="footer__social">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+      <p class="footer__copy">&copy; 2026 Enjoy team. Všechna práva vyhrazena.</p>
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>

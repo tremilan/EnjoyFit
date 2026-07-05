@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rezervace – Frýdlant nad Ostravicí | Enjoy team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/kalendar.css?v=28">
+</head>
+<body class="rezervace-page">
+
+  <header class="rezervace-header">
+    <div class="rezervace-header__inner">
+      <a href="../index.html" class="rezervace-header__back">← Zpět na web</a>
+      <h1 class="rezervace-header__title">Rezervace · Frýdlant nad Ostravicí</h1>
+      <button type="button" class="rezervace-btn rezervace-btn--ghost rezervace-header__contacts" id="contactsToggle">Kontakty</button>
+      <button type="button" class="rezervace-btn rezervace-btn--ghost" id="adminToggle">Admin</button>
+    </div>
+  </header>
+
+  <main class="rezervace-main">
+    <div class="rezervace-alert" id="serverAlert" hidden></div>
+
+    <div class="rezervace-admin-bar" id="adminBar">
+      <strong>Admin režim</strong>
+      <span>Klikněte na den s „+ lekce“ a vyplňte čas lekce (od–do).</span>
+    </div>
+
+    <div class="rezervace-legend">
+      <span class="has-lesson"><i></i> Den s lekcí (světlé = volno)</span>
+      <span class="full"><i></i> Plně obsazeno (tmavé = obsazeno)</span>
+    </div>
+
+    <div class="rezervace-toolbar">
+      <div class="rezervace-month">
+        <button type="button" class="rezervace-btn rezervace-btn--ghost" id="prevMonth" aria-label="Předchozí měsíc">←</button>
+        <h2 id="monthTitle"></h2>
+        <button type="button" class="rezervace-btn rezervace-btn--ghost" id="nextMonth" aria-label="Další měsíc">→</button>
+      </div>
+    </div>
+
+    <div class="cal-grid" id="calGrid"></div>
+  </main>
+
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal__header">
+        <div>
+          <h3 class="modal__title" id="modalTitle">Lekce</h3>
+          <div class="modal__subtitle" id="modalSubtitle"></div>
+        </div>
+        <button type="button" class="modal__close" id="modalClose" aria-label="Zavřít">×</button>
+      </div>
+      <div id="modalTimeEdit"></div>
+      <div class="rezervace-hp" aria-hidden="true">
+        <label for="bookingHp">Web</label>
+        <input type="text" id="bookingHp" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="slots-grid" id="slotsGrid"></div>
+      <div id="modalBookingForm" class="booking-form-panel" hidden></div>
+      <div id="modalCancel"></div>
+      <div class="modal__admin-actions" id="modalAdmin">
+        <button type="button" class="rezervace-btn" id="deleteLesson" style="background:#8b3a3a;">Smazat lekci</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="lessonFormModal" role="dialog" aria-modal="true">
+    <div class="modal modal--compact">
+      <div class="modal__header">
+        <div>
+          <h3 class="modal__title">Nová lekce</h3>
+          <p class="modal__subtitle" id="lessonFormDate"></p>
+        </div>
+        <button type="button" class="modal__close" id="lessonFormCancel" aria-label="Zavřít">×</button>
+      </div>
+      <div class="lesson-form">
+        <label class="lesson-form__field lesson-form__field--full">
+          <span>Typ cvičení</span>
+          <input type="text" id="exerciseType" maxlength="60" placeholder="např. Kruháč, Yoga, Core" required>
+        </label>
+        <div class="lesson-form__row">
+          <label class="lesson-form__field">
+            <span>Čas od</span>
+            <input type="time" id="timeFrom" value="18:30" required>
+          </label>
+          <label class="lesson-form__field">
+            <span>Čas do</span>
+            <input type="time" id="timeTo" value="19:30" required>
+          </label>
+          <label class="lesson-form__field">
+            <span>Počet míst</span>
+            <input type="number" id="maxSlots" min="1" max="100" value="20" required>
+          </label>
+          <label class="lesson-form__field">
+            <span>Cena (Kč/osoba)</span>
+            <input type="number" id="lessonPrice" min="0" max="100000" value="200" required>
+          </label>
+        </div>
+        <button type="button" class="rezervace-btn lesson-form__submit" id="lessonFormSave">Přidat lekci</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="contactsModal" role="dialog" aria-modal="true">
+    <div class="modal modal--contacts">
+      <div class="modal__header">
+        <div>
+          <h3 class="modal__title">Kontakty klientů</h3>
+          <p class="modal__subtitle">Uložené bez duplicit podle e-mailu, zůstávají i po zrušení rezervace.</p>
+        </div>
+        <button type="button" class="modal__close" id="contactsClose" aria-label="Zavřít">×</button>
+      </div>
+      <div class="contacts-toolbar">
+        <button type="button" class="rezervace-btn rezervace-btn--small" id="contactsExport">Stáhnout CSV</button>
+      </div>
+      <div class="contacts-table-wrap" id="contactsTableWrap"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    window.REZERVACE_CONFIG = {
+      branch: 'frydlant',
+      branchName: 'Frýdlant nad Ostravicí',
+    };
+  </script>
+  <script src="js/kalendar.js?v=28"></script>
+</body>
+</html>

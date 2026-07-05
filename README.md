@@ -1,53 +1,62 @@
-# Enjoy Team — webový projekt
+# Enjoy team – Web
 
-Nový statický web pro klienta Enjoy Team. Samostatný projekt, bez vazby na předchozí práce.
+Jednostránkový web pro fitness tým Enjoy team se dvěma pobočkami a vlastním rezervačním kalendářem.
 
 **GitHub:** https://github.com/tremilan/EnjoyFit  
-**Veřejná URL:** https://tremilan.github.io/EnjoyFit/
+**Veřejná URL (statický web):** https://tremilan.github.io/EnjoyFit/
 
-## Spuštění náhledu
+## Spuštění lokálně (plná verze včetně rezervací)
 
 ```bash
 cd ~/Desktop/Enjoy\ Team
-python3 serve.py
+python3 server.py
 ```
 
-→ http://127.0.0.1:8000
+Web poběží na **http://localhost:3000**
 
-Test na telefonu ve stejné Wi‑Fi:
+| Stránka | URL |
+|---------|-----|
+| Hlavní web | http://localhost:3000 |
+| Rezervace Frýdlant | http://localhost:3000/rezervace/frydlant.html |
+| Rezervace Krmelín | http://localhost:3000/rezervace/krmelin.html |
 
-```bash
-python3 serve.py --lan
-```
+> **Poznámka:** Nestačí otevřít `index.html` v prohlížeči ani `python3 -m http.server` — rezervace potřebují `server.py` s databází.
 
 ## GitHub Pages
 
-Web se publikuje ze složky `docs/` ve větvi `main`.
+Statický web (design, texty, loga) se publikuje ze složky `docs/` při pushi do `main`.
 
-**Jednorázové nastavení v GitHubu:** [Settings → Pages](https://github.com/tremilan/EnjoyFit/settings/pages) → **Build and deployment → Source:** Deploy from a branch → **Branch:** `main` → **Folder:** `/docs` → Save.
+**Rezervační kalendář na GitHub Pages nefunguje** — vyžaduje běžící `server.py` a SQLite databázi. Pro produkční rezervace je potřeba hosting s backendem (VPS, Railway, Render…).
 
-Po uložení může první nasazení trvat 1–2 minuty.
+## Rezervační kalendář
+
+### Pro návštěvníky
+1. Otevřete kalendář své pobočky
+2. Klikněte na zelený den s lekcí
+3. Vyberte volné místo a vyplňte údaje
+
+### Pro admina (trenéry)
+1. Klikněte na **Admin** a zadejte PIN (výchozí: `enjoy2026`)
+2. Klikněte na den s „+ lekce“ pro přidání termínu
+3. V detailu lekce můžete uvolnit místo nebo smazat celou lekci
+
+### Změna admin PIN
+```bash
+ADMIN_PIN=vase-heslo python3 server.py
+```
+
+Data se ukládají do `data/rezervace.db` (SQLite, mimo git).
 
 ## Struktura
 
 | Složka / soubor | Účel |
 |---|---|
 | `docs/` | HTML, CSS, JS, assety (zdroj i GitHub Pages) |
-| `docs/css/` | Design systém a styly |
-| `docs/js/` | Interaktivita |
-| `docs/assets/` | Obrázky, ikony, média |
-| `serve.py` | Lokální vývojový server |
+| `server.py` | Lokální web + rezervační API |
+| `data/` | SQLite databáze (lokálně, gitignored) |
+| `fotky/` | Klientské podklady (lokálně, gitignored) |
 
-## Klientské podklady
+## Barvy
 
-Složka `fotky/` (archiv FIT CLUB Milan) zůstává **mimo git** — obsahuje velké soubory (fotky, videa). Po rozbalení použijte vybrané assety ve `docs/assets/images/`.
-
-## Git
-
-```bash
-git push origin main
-```
-
-## Stav
-
-Základ projektu — připraveno k návrhu a implementaci obsahu.
+- Pozadí: `#bdcfc0` (šalvějová zelená)
+- Text: `#2e6348` / `#3d7457` (tmavě zelená)

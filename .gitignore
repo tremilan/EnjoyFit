@@ -4,9 +4,13 @@ __pycache__/
 .env
 .env.*
 *.log
-export/
-export.zip
+node_modules/
 
 # Klientské podklady (fotky, videa, archivy) — pouze lokálně
 fotky/
 *.zip
+export/
+export.zip
+
+# Rezervační databáze — lokální data
+data/
