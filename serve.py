@@ -16,7 +16,7 @@ import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-SITE_DIR = Path(__file__).resolve().parent / "site"
+SITE_DIR = Path(__file__).resolve().parent / "docs"
 DEFAULT_PORT = 8000
 
 
